@@ -1,0 +1,16 @@
+{
+  "name": "loaded-dicewriter",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Local-first visual laboratory for statistical text watermarking",
+  "scripts": {
+    "dev": "bash scripts/dev.sh",
+    "build": "bash scripts/build.sh",
+    "test": "make test",
+    "lint": "make lint",
+    "ci": "bash scripts/ci.sh"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

@@ -1,0 +1,14 @@
+# Local model registry. No network download is performed by the app.
+# For mode=transformers, point model.model_path (app.toml) at an on-disk tree
+# that already contains the tokenizer + weights (or set local_path here).
+
+[[models]]
+id = "local-instruct-small"
+hf_id = "sshleifer/tiny-gpt2"
+revision = ""
+backend = "transformers"
+dtype = "auto"
+chat_template = false
+max_context_tokens = 1024
+recommended_max_new_tokens = 64
+# local_path = "/absolute/path/to/weights"

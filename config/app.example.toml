@@ -1,0 +1,24 @@
+# loaded-dicewriter local configuration
+# Copy to config/app.toml or set LDW_CONFIG to an absolute path.
+# Defaults bind to loopback only. No telemetry. No external calls.
+
+[server]
+host = "127.0.0.1"
+port = 8765
+# Directory for session data (created if missing). SQLite arrives in a later card.
+data_dir = "data"
+# Optional hub prefix (runtime middleware). Prefer env APP_BASE_PATH.
+# Must match the frontend build-time APP_BASE_PATH (e.g. "/loaded-dicewriter/").
+# app_base_path = "/"
+
+[model]
+# "fake" runs without GPU or model weights (CI / first boot). Default.
+# "transformers" uses a local on-disk Hugging Face model (no network download).
+mode = "fake"
+# Absolute path to a local model directory when mode = "transformers".
+# Required for real weights; the app will not download models.
+# model_path = "/path/to/local/model"
+
+[privacy]
+# Confirm: this app does not phone home.
+telemetry = false

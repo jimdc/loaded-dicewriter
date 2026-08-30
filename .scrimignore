@@ -1,0 +1,6 @@
+# Narrow false-positive suppressions for the public-release privacy gate.
+# Format: RULE:path # reason (a reason is required).
+
+A005:pyproject.toml # Packaging, test, lint, and typechecker arrays are executable tool configuration, not sourced public data.
+A006:docs/accessibility.md # "Approximate" describes a visual alignment tolerance, not interpolated or estimated data.
+A006:docs/spec.md # Approximation terms explain detector math and UI behavior explicitly; they do not conceal estimated public data.

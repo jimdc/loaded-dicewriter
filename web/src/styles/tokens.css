@@ -1,0 +1,104 @@
+/* Theme tokens — quiet microscope, not a research cockpit.
+   Local-only system fonts. No external font/CDN calls. */
+
+:root {
+  color-scheme: light dark;
+
+  /* Surfaces */
+  --bg: #f6f5f2;
+  --bg-elevated: #fffcf7;
+  --bg-muted: #eceae4;
+  --bg-hover: #e4e1d9;
+  --border: #d5d1c7;
+  --border-strong: #b9b3a6;
+
+  /* Ink */
+  --text: #1c1b19;
+  --text-secondary: #5c584f;
+  --text-tertiary: #8a8478;
+  --text-inverse: #f6f5f2;
+
+  /* Accents — restrained; green/red only as annotation */
+  --accent: #3d5a4c;
+  --accent-soft: #d7e4dc;
+  --focus: #2f5d8c;
+  --focus-ring: rgba(47, 93, 140, 0.45);
+  --danger: #8b3a2f;
+  --danger-soft: #f0ddd8;
+  --warning: #8a6a22;
+  --ok: #2f6b4f;
+
+  /* Token annotation (used later; defined for a11y baseline docs) */
+  --token-favored-bg: rgba(47, 107, 79, 0.12);
+  --token-favored-underline: #2f6b4f;
+  --token-nonfavored-bg: rgba(139, 58, 47, 0.08);
+  --token-nonfavored-underline: #8b3a2f;
+  --token-excluded-underline: #8a8478;
+  --token-selected-ring: var(--focus);
+  /* Token-level clean/loaded diff (CRN pairs) */
+  --token-diff-bg: rgba(138, 106, 34, 0.16);
+  --token-diff-underline: #8a6a22;
+
+  /* Layout */
+  --sidebar-width: 160px;
+  --sidebar-collapsed: 56px;
+  --content-max: 1120px;
+  --radius: 10px;
+  --radius-sm: 6px;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --shadow-soft: 0 1px 2px rgba(28, 27, 25, 0.04), 0 4px 16px rgba(28, 27, 25, 0.04);
+  --touch-min: 44px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #141311;
+    --bg-elevated: #1c1b18;
+    --bg-muted: #24221e;
+    --bg-hover: #2d2a25;
+    --border: #3a3630;
+    --border-strong: #524c43;
+
+    --text: #f0ede6;
+    --text-secondary: #b5aea1;
+    --text-tertiary: #7f786c;
+    --text-inverse: #141311;
+
+    --accent: #8fb6a1;
+    --accent-soft: #24352c;
+    --focus: #7eb0e0;
+    --focus-ring: rgba(126, 176, 224, 0.45);
+    --danger: #e08a7c;
+    --danger-soft: #3a2420;
+    --warning: #d4b35a;
+    --ok: #7dba98;
+
+    --token-diff-bg: rgba(212, 179, 90, 0.22);
+    --token-diff-underline: #d4b35a;
+
+    --token-favored-bg: rgba(125, 186, 152, 0.14);
+    --token-favored-underline: #7dba98;
+    --token-nonfavored-bg: rgba(224, 138, 124, 0.12);
+    --token-nonfavored-underline: #e08a7c;
+    --token-excluded-underline: #7f786c;
+
+    --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.25), 0 8px 24px rgba(0, 0, 0, 0.25);
+  }
+}
+
+/* Explicit theme overrides via data-theme (Settings can set later) */
+[data-theme="light"] {
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+}

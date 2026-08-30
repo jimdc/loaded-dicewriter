@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+# Production server for loaded-dicewriter (supports APP_BASE_PATH subpath hosting).
+#
+# Fixed port: 8765 on loopback by default.
+#
+# Build (root mode — local):
+#   make build
+#   # or: APP_BASE_PATH=/  via scripts/build.sh
+#
+# Build (subpath mode — reverse proxy under /loaded-dicewriter/, often strip-prefix):
+#   APP_BASE_PATH=/loaded-dicewriter/ make build
+#
+# Serve (after matching build):
+#   ./bin/serve
+#   APP_BASE_PATH=/loaded-dicewriter/ ./bin/serve   # middleware accepts prefix too
+#
+# Env:
+#   APP_BASE_PATH  default /  (must match the frontend build for correct asset URLs)
+#   PORT           default 8765
+#   HOST           default 127.0.0.1
+#   LDW_PORT / LDW_HOST  accepted as aliases
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+cd "$ROOT"
+export PATH="${HOME}/.local/node/bin:${HOME}/.local/bin:${PATH}"
+
+export APP_BASE_PATH="${APP_BASE_PATH:-/}"
+PORT="${PORT:-${LDW_PORT:-8765}}"
+HOST="${HOST:-${LDW_HOST:-127.0.0.1}}"
+export LDW_PORT="$PORT"
+export LDW_HOST="$HOST"
+
+if [[ ! -f web/dist/index.html ]]; then
+  echo "error: missing web/dist/index.html — run a production build first:" >&2
+  echo "  APP_BASE_PATH=${APP_BASE_PATH} make build" >&2
+  exit 1
+fi
+
+echo "loaded-dicewriter: serve host=${HOST} port=${PORT} APP_BASE_PATH=${APP_BASE_PATH}"
+exec uv run loaded-dicewriter serve --host "$HOST" --port "$PORT"
