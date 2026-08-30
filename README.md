@@ -8,7 +8,7 @@ measured detector scores.
 No live generation UI, no spinner, no model download at runtime — only the precomputed
 text and scores ship.
 
-**Live demo:** [jimdc.github.io/loaded-dicewriter](https://jimdc.github.io/loaded-dicewriter/)
+**Live demo:** [bottomry.github.io/loaded-dicewriter](https://bottomry.github.io/loaded-dicewriter/)
 
 **Stack:** React + TypeScript (strict) + Vite · Python 3.11+ · FastAPI (static shell +
 health) · local-first, loopback default, no telemetry.
